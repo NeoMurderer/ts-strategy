@@ -14,11 +14,11 @@ export const databaseProviders = [
       } */
       const sequelize = new Sequelize({
         dialect: 'mysql',
-        host: 'localhost',
+        host: '46.37.213.81',
         port: 3306,
         username: 'root',
-        password: '',
-        database: 'test',
+        password: 'test',
+        database: 'ts',
       });
       DatabaseService.syncModels(sequelize)
       await sequelize.sync()

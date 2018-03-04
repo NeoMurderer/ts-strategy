@@ -1,7 +1,7 @@
 import { Table, Column, Model } from 'sequelize-typescript';
 
 @Table
-export class Car {
+export default class Car extends Model<Car> {
 
     @Column name: string;
 

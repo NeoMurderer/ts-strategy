@@ -7,7 +7,7 @@ import { AuthController } from './auth.controller';
     controllers: [AuthController],
     components: [AuthService, JwtStrategy]
 })
-export class AuthModule implements NestModule {
+export default class AuthModule implements NestModule {
     public configure(consumer: MiddlewaresConsumer) {
         consumer
             .apply(passport.authenticate('jwt', { session: false }))

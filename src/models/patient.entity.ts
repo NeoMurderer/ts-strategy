@@ -1,10 +1,8 @@
 import { Table, Column, Model } from 'sequelize-typescript';
 
 @Table
-export default class Cat extends Model<Cat> {
+export default class Patient extends Model<Patient> {
 
     @Column name: string;
-
-    @Column age: number;
 
 }

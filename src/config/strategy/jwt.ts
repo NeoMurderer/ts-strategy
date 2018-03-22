@@ -1,7 +1,7 @@
 import * as passport from 'passport'
 import { Component, HttpException, HttpStatus, HttpCode } from '@nestjs/common';
-import { AuthService } from '../auth.service';
 import { ExtractJwt, Strategy } from 'passport-jwt'
+import { AuthService } from '../../core/auth/auth.service';
 
 @Component()
 export class JwtStrategy extends Strategy  {
@@ -12,7 +12,9 @@ export class JwtStrategy extends Strategy  {
               passReqToCallback: true,
               secretOrKey: 'secret',
             },
-            async (req, payload, next) => await this.verify(req, payload, next) ,
+            async (req, payload, next) => {
+                return await this.verify(req, payload, next)
+            }
           )
           passport.use(this)
     }

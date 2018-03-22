@@ -8,15 +8,15 @@ import { databaseProviders } from './database.providers';
 @Component()
 export class DatabaseService {
     constructor (databaseProviders) {
-
     }
     getStatus(): any {
+        console.info('getStatus')
         databaseProviders.forEach(provider => {
             provider.authenticate().then(function(errors) { console.log(errors) });
         })
     }
     static syncModels(sequelize: Sequelize): void {
-        const modelsDir = path.resolve(__dirname, './models')
+        const modelsDir = path.resolve(__dirname, '../../' ,'./models')
         fs.readdir(modelsDir, (error, files) => {
             if (error) {
                 console.error(error.message)

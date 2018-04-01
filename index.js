@@ -1,2 +1,4 @@
 require('ts-node/register');
-require('./src/main');
+const {MicroservicesModule} = require('./src/microservices/microservices');
+
+const ms = new MicroservicesModule()

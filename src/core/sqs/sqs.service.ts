@@ -1,5 +1,7 @@
 import { Component } from "@nestjs/common";
 import { delay } from "bluebird";
+import { SQSModule } from "./sqs.module";
+const RSMQPromise = require('rsmq-promise');
 
 export interface Queue {
     qname: string
@@ -13,11 +15,17 @@ export interface Message {
 }
 @Component()
 export class SQSService {
-    async create (queue: Queue) {
-        return await true // SQSModule.rsmq.createQueue(queue)
+    private rsmq: any
+    constructor () {
+        this.rsmq = new RSMQPromise({ 
+            ns: 'rsmq' 
+        })
+    }
+    async create (queue: Queue): Promise<any> {
+        return await this.rsmq.createQueue(queue)
     }
     async send(message: Message, queue: Queue): Promise<Number> {
-        const messageID = await SQSModule.rsmq.sendMessage({
+        const messageID = await this.rsmq.sendMessage({
             qname: queue.qname,
             message: JSON.stringify(message)
         })

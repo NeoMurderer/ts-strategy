@@ -17,7 +17,7 @@ export class MicroservicesModule {
     }
     constructor () {
         this.startMicroservice().then((app) => {
-            app.listen(() => console.log('Microservice is listening'));
+            app.listen(() => console.log(`Microservice is listening ${this.defaultConfig.port}`));
         })
     }
 }

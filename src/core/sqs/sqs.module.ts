@@ -7,11 +7,6 @@ const RedisSMQ = require('rsmq-promise')
     imports: []
 })
 export class SQSModule {
-    static rsmq: any;
-    rsmq: any
     constructor() {
-        this.rsmq = new RedisSMQ({ 
-            ns: 'rsmq' 
-        })
     }
 }
